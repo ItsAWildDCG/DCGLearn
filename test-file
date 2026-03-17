@@ -1,0 +1,107 @@
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+// Giả lập dữ liệu từ CSDL (thực tế bạn sẽ lấy từ bảng User và Role)
+const mockUser = {
+    id: 1,
+    email: 'admin@example.com',
+    password_hash: '$2a$10$X... (mật khẩu đã mã hóa)', // Ví dụ mật khẩu là '123456'
+    role: 'Admin' // Các role có thể là: 'Admin', 'Giảng viên', 'Sinh viên'
+};
+
+exports.login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        // 1. Tìm user trong DB bằng email (ở đây dùng mockUser)
+        if (email !== mockUser.email) {
+            return res.status(401).json({ message: 'Email không tồn tại' });
+        }
+
+        // 2. So sánh mật khẩu người dùng nhập với password_hash trong DB
+        // const isMatch = await bcrypt.compare(password, mockUser.password_hash);
+        const isMatch = true; // Giả lập là đúng để test
+
+        if (!isMatch) {
+            return res.status(401).json({ message: 'Sai mật khẩu' });
+        }
+
+        // 3. Tạo JWT Token nếu đăng nhập thành công
+        const token = jwt.sign(
+            { userId: mockUser.id, role: mockUser.role }, 
+            process.env.JWT_SECRET, 
+            { expiresIn: '1h' } // Token hết hạn sau 1 giờ
+        );
+
+        res.json({ message: 'Đăng nhập thành công', token });
+
+    } catch (error) {
+        res.status(500).json({ message: 'Lỗi server' });
+    }
+};
+
+
+const jwt = require('jsonwebtoken');
+
+// Kiểm tra xem người dùng đã đăng nhập (có token) chưa
+exports.verifyToken = (req, res, next) => {
+    const token = req.headers['authorization'];
+
+    if (!token) {
+        return res.status(403).json({ message: 'Cần cung cấp token!' });
+    }
+
+    try {
+        // Cắt bỏ chữ "Bearer " để lấy token thật
+        const decoded = jwt.verify(token.split(" ")[1], process.env.JWT_SECRET);
+        req.user = decoded; // Lưu thông tin user vào request để các hàm sau dùng
+        next(); // Cho phép đi tiếp
+    } catch (err) {
+        return res.status(401).json({ message: 'Token không hợp lệ!' });
+    }
+};
+
+// Kiểm tra quyền (Role)
+exports.checkRole = (roles) => {
+    return (req, res, next) => {
+        // req.user.role được lấy ra từ verifyToken ở trên
+        if (!roles.includes(req.user.role)) {
+            return res.status(403).json({ message: 'Bạn không có quyền thực hiện hành động này!' });
+        }
+        next();
+    };
+};
+
+
+
+require('dotenv').config();
+const express = require('express');
+const { verifyToken, checkRole } = require('./middlewares/auth.middleware');
+// Lấy hàm login từ controller
+// const { login } = require('./controllers/auth.controller'); 
+
+const app = express();
+app.use(express.json()); // Để đọc dữ liệu JSON gửi lên
+
+// API Đăng nhập (Ai cũng có thể truy cập)
+// app.post('/api/login', login);
+
+// API Dành cho Admin (Quản lý người dùng)
+app.get('/api/admin/users', verifyToken, checkRole(['Admin']), (req, res) => {
+    res.json({ message: 'Chào mừng Admin, đây là danh sách người dùng.' });
+});
+
+// API Dành cho Giảng viên (Tạo bài kiểm tra)
+app.post('/api/courses', verifyToken, checkRole(['Admin', 'Giảng viên']), (req, res) => {
+    res.json({ message: 'Khóa học mới đã được tạo.' });
+});
+
+// API Dành cho Sinh viên (Làm bài nộp bài)
+app.post('/api/submissions', verifyToken, checkRole(['Sinh viên']), (req, res) => {
+    res.json({ message: 'Nộp bài thành công.' });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server đang chạy tại http://localhost:${PORT}`);
+});

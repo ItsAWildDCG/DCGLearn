@@ -1,0 +1,525 @@
+{
+  "info": {
+    "_postman_id": "ddb90dfd-2c33-4645-990d-42f5cd09ee7e",
+    "name": "LMS API Collection",
+    "description": "Full API collection for LMS system (Auth, User, Courses, Lessons, Assignments, Submissions, Progress, Enrollment)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53352304",
+    "_collection_link": "https://go.postman.co/collection/53352304-ddb90dfd-2c33-4645-990d-42f5cd09ee7e?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"role\": \"Student\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"123456\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/user/profile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "user",
+                "profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/user/all",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "user",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Role",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"role\": \"Teacher\" }"
+            },
+            "url": {
+              "raw": "{{base_url}}/user/role/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "user",
+                "role",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"newPassword\": \"123456\" }"
+            },
+            "url": {
+              "raw": "{{base_url}}/user/reset-password/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "user",
+                "reset-password",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/user/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "user",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Courses",
+      "item": [
+        {
+          "name": "Get All Courses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/courses/all",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "courses",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Course By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/courses/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "courses",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Course",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"title\": \"NodeJS\", \"description\": \"Backend course\" }"
+            },
+            "url": {
+              "raw": "{{base_url}}/courses",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "courses"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Course",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"title\": \"Updated\", \"description\": \"Updated desc\" }"
+            },
+            "url": {
+              "raw": "{{base_url}}/courses/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "courses",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Course",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/courses/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "courses",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Enrollment",
+      "item": [
+        {
+          "name": "Enroll Course",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"courseId\": 1 }"
+            },
+            "url": {
+              "raw": "{{base_url}}/enrollments/enroll",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "enrollments",
+                "enroll"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "My Courses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/enrollments/my-courses",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "enrollments",
+                "my-courses"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Lessons",
+      "item": [
+        {
+          "name": "Get Lessons By Course",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/lessons/course/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "lessons",
+                "course",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Lesson",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courseId\": 1,\n  \"title\": \"Intro\",\n  \"description\": \"...\",\n  \"content_type\": \"text\",\n  \"content_text\": \"Hello\",\n  \"content_url\": \"\",\n  \"order_index\": 1\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/lessons",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "lessons"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Assessments",
+      "item": [
+        {
+          "name": "Get All Assessments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/assignments/all",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "assignments",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Assessment Detail",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/assignments/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "assignments",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Assessment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courseId\": 1,\n  \"title\": \"Quiz\",\n  \"description\": \"...\",\n  \"timeLimit\": 30,\n  \"questions\": []\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/assignments",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "assignments"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Submissions",
+      "item": [
+        {
+          "name": "Submit Assessment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assessmentId\": 4,\n  \"answers\": [\n    {\n      \"question_id\": 7,\n      \"optionIds\": [14]\n    },\n    {\n      \"question_id\": 8,\n      \"optionIds\": [17, 19, 16]\n    },\n    {\n      \"question_id\": 6,\n      \"optionIds\": [11]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/submissions/submit",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "submissions",
+                "submit"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Submissions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/submissions/assignment/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "submissions",
+                "assignment",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Progress",
+      "item": [
+        {
+          "name": "Get Progress",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/progress/course/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "progress",
+                "course",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000/api"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}

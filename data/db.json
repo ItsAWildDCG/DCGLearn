@@ -1,0 +1,18 @@
+{
+    "users": [
+        {
+            "id": 1775376180192,
+            "name": "bruh",
+            "email": "bruh@gmail.com",
+            "role": "Học viên",
+            "password": "$2b$10$ZEUPjcRBRJ36vFav31vgseou2mEysPBlAwG3kJE9coGJx.ChHHnZ."
+        },
+        {
+            "id": 1775555138793,
+            "name": "thebruh",
+            "email": "thebruh@gmail.com",
+            "role": "Giảng viên",
+            "password": "$2b$10$pIkiWMyCoVZFsf7QsoTZNu98k2w56x9IEU0By2O9WnYUHVDneWkri"
+        }
+    ]
+}

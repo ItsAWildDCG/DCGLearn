@@ -1,0 +1,11 @@
+{
+  "enrollments": [
+    {
+      "id": 401,
+      "studentId": 1775376180192,
+      "studentName": "bruh",
+      "courseId": "MATH12",
+      "enrolledAt": "2026-04-08T11:00:00Z"
+    }
+  ]
+}

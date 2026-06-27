@@ -1,0 +1,24 @@
+{
+  "lessons": [
+    {
+      "id": 201,
+      "courseId": 101,
+      "title": "Bài 1: Khái niệm Đạo hàm",
+      "content": "Đây là nội dung bài giảng lý thuyết...",
+      "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "instructorId": 1775574445246,
+      "order": 1,
+      "createdAt": "2026-04-08T10:00:00Z"
+    },
+    {
+      "id": 1775642927848,
+      "courseId": 1775608995402,
+      "title": "Bài 1: Đạo hàm",
+      "content": "Nội dung bài giảng...",
+      "videoUrl": "https://youtube.com/...",
+      "instructorId": 1775574445246,
+      "order": 2,
+      "createdAt": "2026-04-08T10:08:47.848Z"
+    }
+  ]
+}

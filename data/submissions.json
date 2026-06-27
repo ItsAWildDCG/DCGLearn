@@ -1,0 +1,30 @@
+{
+  "submissions": [
+    {
+      "id": 1775647446307,
+      "assignmentId": 301,
+      "studentId": 1775575031256,
+      "studentName": "a",
+      "answers": [
+        {
+          "questionId": 1,
+          "selectedIndices": [
+            1
+          ]
+        },
+        {
+          "questionId": 2,
+          "selectedIndices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "submittedAt": "2026-04-08T11:24:06.307Z",
+      "score": 10,
+      "correctCount": 2,
+      "totalQuestions": 2,
+      "status": "Đã hoàn thành"
+    }
+  ]
+}

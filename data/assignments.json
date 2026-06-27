@@ -1,0 +1,86 @@
+{
+  "assignments": [
+    {
+      "id": 301,
+      "title": "Kiểm tra kiến thức Đạo hàm cơ bản",
+      "content": "Bài làm trong 15 phút",
+      "courseCode": "MATH12",
+      "deadline": "2026-05-01T23:59:00Z",
+      "points": 10,
+      "instructor": "a",
+      "instructorId": 1775574445246,
+      "createdAt": "2026-04-08T10:30:00Z",
+      "questions": [
+        {
+          "id": 1,
+          "text": "Đạo hàm của x^2 là gì?",
+          "type": "single",
+          "options": [
+            "x",
+            "2x",
+            "x^2",
+            "1"
+          ],
+          "correctAnswers": [
+            1
+          ]
+        },
+        {
+          "id": 2,
+          "text": "Chọn các phát biểu đúng về hàm số?",
+          "type": "multiple",
+          "options": [
+            "Có cực trị",
+            "Có đạo hàm",
+            "Luôn đồng biến",
+            "Có tiệm cận"
+          ],
+          "correctAnswers": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1775643039889,
+      "title": "Kiểm tra Đạo hàm",
+      "courseCode": "MATH12",
+      "points": 10,
+      "instructor": "a",
+      "instructorId": 1775574445246,
+      "createdAt": "2026-04-08T10:10:39.889Z",
+      "questions": [
+        {
+          "id": 1,
+          "text": "1 + 1 = ?",
+          "type": "single",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "correctAnswers": [
+            1
+          ]
+        },
+        {
+          "id": 2,
+          "text": "Các số nguyên tố nhỏ hơn 5?",
+          "type": "multiple",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "6"
+          ],
+          "correctAnswers": [
+            0,
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}
